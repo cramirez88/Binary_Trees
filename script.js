@@ -27,16 +27,29 @@
 
 
 
-const treeSum = (root) => {
-  if(!root) return 0
+// const treeSum = (root) => {
+//   if(!root) return 0
+//   let queue = [root]
+//   let sum = 0
+//   while(queue.length > 0){
+//     let node = queue.shift()
+//     sum += node.val
+    
+//     if(node.left !== null) queue.push(node.left)
+//     if(node.right !== null) queue.push(node.right)
+//   }
+//   return sum
+// };
+
+const treeIncludes = (root, target) => {
+  if(!root) return false
   let queue = [root]
-  let sum = 0
   while(queue.length > 0){
     let node = queue.shift()
-    sum += node.val
+    if(node.val === target) return true
     
     if(node.left !== null) queue.push(node.left)
     if(node.right !== null) queue.push(node.right)
   }
-  return sum
+  return false
 };
