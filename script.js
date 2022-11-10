@@ -41,15 +41,30 @@
 //   return sum
 // };
 
-const treeIncludes = (root, target) => {
-  if(!root) return false
-  let queue = [root]
-  while(queue.length > 0){
-    let node = queue.shift()
-    if(node.val === target) return true
+// const treeIncludes = (root, target) => {
+//   if(!root) return false
+//   let queue = [root]
+//   while(queue.length > 0){
+//     let node = queue.shift()
+//     if(node.val === target) return true
     
-    if(node.left !== null) queue.push(node.left)
-    if(node.right !== null) queue.push(node.right)
-  }
-  return false
-};
+//     if(node.left !== null) queue.push(node.left)
+//     if(node.right !== null) queue.push(node.right)
+//   }
+//   return false
+// };
+
+
+// const treeMinValue = (root) => {
+//   let queue = [root]
+//   let minValue = root.val
+//   while(queue.length > 0){
+//     let node = queue.shift()
+//     if(node.val < minValue) {
+//       minValue = node.val
+//     }
+//     if(node.left !== null) queue.push(node.left)
+//     if(node.right !== null) queue.push(node.right)
+//   }
+//   return minValue
+// };
