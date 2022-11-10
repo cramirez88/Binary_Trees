@@ -11,16 +11,32 @@
 //   return newArr
 // };
 
-const breadthFirstValues = (root) => {
-  if(!root) return []
+// const breadthFirstValues = (root) => {
+//   if(!root) return []
+//   let queue = [root]
+//   let newArr =[]
+//   while(queue.length > 0){
+//     let node = queue.shift()
+//     newArr.push(node.val)
+    
+//     if(node.left !== null) queue.push(node.left)
+//     if(node.right !== null) queue.push(node.right)
+//   }
+//   return newArr
+// };
+
+
+
+const treeSum = (root) => {
+  if(!root) return 0
   let queue = [root]
-  let newArr =[]
+  let sum = 0
   while(queue.length > 0){
     let node = queue.shift()
-    newArr.push(node.val)
+    sum += node.val
     
     if(node.left !== null) queue.push(node.left)
     if(node.right !== null) queue.push(node.right)
   }
-  return newArr
+  return sum
 };
