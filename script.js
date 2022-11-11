@@ -69,9 +69,27 @@
 //   return minValue
 // };
 
-if(!root) return -Infinity
-  if(root.right === null && root.left === null) return root.val
-  console.log(root.right, root.left)
-  let nodeSum = Math.max(maxPathSum(root.right), maxPathSum(root.left))
-  console.log(root.val + nodeSum)
-  return root.val + nodeSum
+// if(!root) return -Infinity
+//   if(root.right === null && root.left === null) return root.val
+//   console.log(root.right, root.left)
+//   let nodeSum = Math.max(maxPathSum(root.right), maxPathSum(root.left))
+//   console.log(root.val + nodeSum)
+//   return root.val + nodeSum
+
+const pathFinder = (root, target) => {
+  if(!root) return null
+  if(root.val === target) return [root.val]
+  
+  let leftPath = pathFinder(root.left, target)
+  if(leftPath !== null) {
+    return [root.val, ...leftPath]
+  }
+  
+  let rightPath = pathFinder(root.right, target)
+    if(rightPath !== null){
+      return [root.val, ...rightPath]
+    }
+  
+  return null
+
+};
