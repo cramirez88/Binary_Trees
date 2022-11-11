@@ -68,3 +68,10 @@
 //   }
 //   return minValue
 // };
+
+if(!root) return -Infinity
+  if(root.right === null && root.left === null) return root.val
+  console.log(root.right, root.left)
+  let nodeSum = Math.max(maxPathSum(root.right), maxPathSum(root.left))
+  console.log(root.val + nodeSum)
+  return root.val + nodeSum
