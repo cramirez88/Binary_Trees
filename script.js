@@ -81,7 +81,9 @@ const pathFinder = (root, target) => {
   if(root.val === target) return [root.val]
   
   let leftPath = pathFinder(root.left, target)
+  console.log(leftPath)
   if(leftPath !== null) {
+    console.log(leftPath)
     return [root.val, ...leftPath]
   }
   
@@ -93,3 +95,11 @@ const pathFinder = (root, target) => {
   return null
 
 };
+
+const treeValueCount = (root, target) => {
+  if(!root) return 0
+  let total = root.val === target ? 1 : 0
+  return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
+};
+
+
