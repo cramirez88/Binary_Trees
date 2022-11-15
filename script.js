@@ -103,13 +103,22 @@
 // };
 
 
-const treeSum = (root) => {
-  //   recursive solution
-    if(root === null) return 0
+// const treeSum = (root) => {
+//   //   recursive solution
+//     if(root === null) return 0
     
-    let sumOfTrees = root.val + (treeSum(root.left) + treeSum(root.right))
-    return sumOfTrees
-  };
+//     let sumOfTrees = root.val + (treeSum(root.left) + treeSum(root.right))
+//     return sumOfTrees
+//   };
+
+
+const treeIncludes = (root, target) => {
+  if(!root) return false
+  if(root.val === target) return true
+  
+  
+  return treeIncludes(root.left, target) || treeIncludes(root.right, target)
+};
 
 
 
