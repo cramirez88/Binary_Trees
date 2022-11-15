@@ -112,13 +112,21 @@
 //   };
 
 
-const treeIncludes = (root, target) => {
-  if(!root) return false
-  if(root.val === target) return true
+// const treeIncludes = (root, target) => {
+//   if(!root) return false
+//   if(root.val === target) return true
   
   
-  return treeIncludes(root.left, target) || treeIncludes(root.right, target)
-};
+//   return treeIncludes(root.left, target) || treeIncludes(root.right, target)
+// };
+
+// const treeMinValue = (root) => {
+//   //   recursive solution
+//     if(root === null) return Infinity
+//     return Math.min(root.val, treeMinValue(root.left), treeMinValue(root.right))
+    
+//   };
+
 
 
 
