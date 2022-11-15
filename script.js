@@ -134,18 +134,26 @@
 //   return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right))
 // };
 
-const pathFinder = (root, target) => {
-  if(!root) return null
-  if(root.val === target) return [root.val]
+// const pathFinder = (root, target) => {
+//   if(!root) return null
+//   if(root.val === target) return [root.val]
   
-  let leftPath = pathFinder(root.left, target)
-  let rightPath = pathFinder(root.right, target)
+//   let leftPath = pathFinder(root.left, target)
+//   let rightPath = pathFinder(root.right, target)
   
-  if(leftPath !== null) return [root.val, ...leftPath]
-  if(rightPath !== null) return [root.val, ...rightPath]
+//   if(leftPath !== null) return [root.val, ...leftPath]
+//   if(rightPath !== null) return [root.val, ...rightPath]
   
-  return null
+//   return null
   
+// };
+
+
+const treeValueCount = (root, target) => {
+  if(!root) return 0
+  let total = root.val === target? 1: 0
+  return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
+
 };
 
 
