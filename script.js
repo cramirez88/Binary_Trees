@@ -76,30 +76,40 @@
 //   console.log(root.val + nodeSum)
 //   return root.val + nodeSum
 
-const pathFinder = (root, target) => {
-  if(!root) return null
-  if(root.val === target) return [root.val]
+// const pathFinder = (root, target) => {
+//   if(!root) return null
+//   if(root.val === target) return [root.val]
   
-  let leftPath = pathFinder(root.left, target)
-  console.log(leftPath)
-  if(leftPath !== null) {
-    console.log(leftPath)
-    return [root.val, ...leftPath]
-  }
+//   let leftPath = pathFinder(root.left, target)
+//   console.log(leftPath)
+//   if(leftPath !== null) {
+//     console.log(leftPath)
+//     return [root.val, ...leftPath]
+//   }
   
-  let rightPath = pathFinder(root.right, target)
-    if(rightPath !== null){
-      return [root.val, ...rightPath]
-    }
+//   let rightPath = pathFinder(root.right, target)
+//     if(rightPath !== null){
+//       return [root.val, ...rightPath]
+//     }
   
-  return null
+//   return null
 
-};
+// };
 
-const treeValueCount = (root, target) => {
-  if(!root) return 0
-  let total = root.val === target ? 1 : 0
-  return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
-};
+// const treeValueCount = (root, target) => {
+//   if(!root) return 0
+//   let total = root.val === target ? 1 : 0
+//   return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
+// };
+
+
+const treeSum = (root) => {
+  //   recursive solution
+    if(root === null) return 0
+    
+    let sumOfTrees = root.val + (treeSum(root.left) + treeSum(root.right))
+    return sumOfTrees
+  };
+
 
 
