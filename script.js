@@ -149,19 +149,33 @@
 // };
 
 
-const treeValueCount = (root, target) => {
-  if(!root) return 0
-  let total = root.val === target? 1: 0
-  return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
+// const treeValueCount = (root, target) => {
+//   if(!root) return 0
+//   let total = root.val === target? 1: 0
+//   return total + treeValueCount(root.left, target) + treeValueCount(root.right, target)
 
+// };
+
+
+// const howHigh = (node) => {
+//   if(!node) return -1
+//   return 1 + Math.max(howHigh(node.left), howHigh(node.right))
+// };
+
+
+const bottomRightValue = (root) => {
+  let queue = [root]
+  if(!root) return null
+  let highestVal = null
+  while(queue.length > 0){
+   highestVal = queue.shift()
+    if(highestVal.left !== null) queue.push(highestVal.left)
+    if(highestVal.right !== null) queue.push(highestVal.right)
+    
+  }
+  
+  return highestVal.val
 };
-
-
-const howHigh = (node) => {
-  if(!node) return -1
-  return 1 + Math.max(howHigh(node.left), howHigh(node.right))
-};
-
 
 
 
