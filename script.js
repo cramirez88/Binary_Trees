@@ -128,11 +128,26 @@
 //   };
 
 
-const maxPathSum = (root) => {
-  if(!root) return -Infinity
-  if(root.left === null && root.right === null) return root.val
-  return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right))
+// const maxPathSum = (root) => {
+//   if(!root) return -Infinity
+//   if(root.left === null && root.right === null) return root.val
+//   return root.val + Math.max(maxPathSum(root.left), maxPathSum(root.right))
+// };
+
+const pathFinder = (root, target) => {
+  if(!root) return null
+  if(root.val === target) return [root.val]
+  
+  let leftPath = pathFinder(root.left, target)
+  let rightPath = pathFinder(root.right, target)
+  
+  if(leftPath !== null) return [root.val, ...leftPath]
+  if(rightPath !== null) return [root.val, ...rightPath]
+  
+  return null
+  
 };
+
 
 
 
