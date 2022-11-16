@@ -157,28 +157,45 @@
 // };
 
 
+
+
+
 // const howHigh = (node) => {
 //   if(!node) return -1
 //   return 1 + Math.max(howHigh(node.left), howHigh(node.right))
 // };
 
 
-const bottomRightValue = (root) => {
-  let queue = [root]
-  if(!root) return null
-  let highestVal = null
-  while(queue.length > 0){
-   highestVal = queue.shift()
-    if(highestVal.left !== null) queue.push(highestVal.left)
-    if(highestVal.right !== null) queue.push(highestVal.right)
+// const bottomRightValue = (root) => {
+//   let queue = [root]
+//   if(!root) return null
+//   let highestVal = null
+//   while(queue.length > 0){
+//    highestVal = queue.shift()
+//     if(highestVal.left !== null) queue.push(highestVal.left)
+//     if(highestVal.right !== null) queue.push(highestVal.right)
     
-  }
+//   }
   
-  return highestVal.val
+//   return highestVal.val
+// };
+
+
+
+const allTreePaths = (root) => {
+  if(!root) return []
+  if(root.left === null && root.right === null) return [[root.val]]
+  
+  const arrayOfArrays = []
+  
+  let leftSide = allTreePaths(root.left)
+      for(let left of leftSide){
+        arrayOfArrays.push([root.val, ...left])
+      }
+  let rightSide = allTreePaths(root.right)
+      for(let right of rightSide){
+        arrayOfArrays.push([root.val, ...right])
+      }
+  
+  return arrayOfArrays
 };
-
-
-
-
-
-
