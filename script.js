@@ -182,20 +182,38 @@
 
 
 
-const allTreePaths = (root) => {
+// const allTreePaths = (root) => {
+//   if(!root) return []
+//   if(root.left === null && root.right === null) return [[root.val]]
+  
+//   const arrayOfArrays = []
+  
+//   let leftSide = allTreePaths(root.left)
+//       for(let left of leftSide){
+//         arrayOfArrays.push([root.val, ...left])
+//       }
+//   let rightSide = allTreePaths(root.right)
+//       for(let right of rightSide){
+//         arrayOfArrays.push([root.val, ...right])
+//       }
+  
+//   return arrayOfArrays
+// };
+
+const treeLevels = (root) => {
   if(!root) return []
-  if(root.left === null && root.right === null) return [[root.val]]
+  let arrayOfArrays = []
+  let queue = [{node: root, level: 0}]
   
-  const arrayOfArrays = []
-  
-  let leftSide = allTreePaths(root.left)
-      for(let left of leftSide){
-        arrayOfArrays.push([root.val, ...left])
-      }
-  let rightSide = allTreePaths(root.right)
-      for(let right of rightSide){
-        arrayOfArrays.push([root.val, ...right])
-      }
-  
+  while(queue.length > 0){
+    const {node, level} = queue.shift()
+    if(arrayOfArrays.length === level){
+      arrayOfArrays[level] = [node.val]
+    }else {
+      arrayOfArrays[level].push(node.val)
+    }
+    if(node.left !== null) queue.push({node: node.left, level: level + 1})
+    if(node.right !== null) queue.push({node: node.right, level: level + 1})
+  }
   return arrayOfArrays
 };
