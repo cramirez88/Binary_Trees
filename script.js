@@ -200,20 +200,55 @@
 //   return arrayOfArrays
 // };
 
-const treeLevels = (root) => {
-  if(!root) return []
-  let arrayOfArrays = []
-  let queue = [{node: root, level: 0}]
+// const treeLevels = (root) => {
+//   if(!root) return []
+//   let arrayOfArrays = []
+//   let queue = [{node: root, level: 0}]
   
+//   while(queue.length > 0){
+//     const {node, level} = queue.shift()
+//     if(arrayOfArrays.length === level){
+//       arrayOfArrays[level] = [node.val]
+//     }else {
+//       arrayOfArrays[level].push(node.val)
+//     }
+//     if(node.left !== null) queue.push({node: node.left, level: level + 1})
+//     if(node.right !== null) queue.push({node: node.right, level: level + 1})
+//   }
+//   return arrayOfArrays
+// };
+
+
+const levelAverages = (root) => {
+  if(!root) return []
+  let queue = [{node: root, level: 0}]
+  let arrays = []
+  let averages = []
+  
+//   subArrays for each level
   while(queue.length > 0){
     const {node, level} = queue.shift()
-    if(arrayOfArrays.length === level){
-      arrayOfArrays[level] = [node.val]
+    if(arrays.length === level){
+      arrays[level] = [node.val]
     }else {
-      arrayOfArrays[level].push(node.val)
+      arrays[level].push(node.val)
     }
     if(node.left !== null) queue.push({node: node.left, level: level + 1})
     if(node.right !== null) queue.push({node: node.right, level: level + 1})
   }
-  return arrayOfArrays
-};
+  
+//   average of subArray 
+  const getAvg = (array) => {
+    let sum = 0
+    for(const avg of array){
+      sum += avg 
+    }
+    return sum / array.length
+  }
+  
+  for(const arr of arrays){
+    averages.push(getAvg(arr))
+  }
+  return averages
+  
+  }
