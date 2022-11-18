@@ -219,36 +219,53 @@
 // };
 
 
-const levelAverages = (root) => {
+// const levelAverages = (root) => {
+//   if(!root) return []
+//   let queue = [{node: root, level: 0}]
+//   let arrays = []
+//   let averages = []
+  
+// //   subArrays for each level
+//   while(queue.length > 0){
+//     const {node, level} = queue.shift()
+//     if(arrays.length === level){
+//       arrays[level] = [node.val]
+//     }else {
+//       arrays[level].push(node.val)
+//     }
+//     if(node.left !== null) queue.push({node: node.left, level: level + 1})
+//     if(node.right !== null) queue.push({node: node.right, level: level + 1})
+//   }
+  
+// //   average of subArray 
+//   const getAvg = (array) => {
+//     let sum = 0
+//     for(const avg of array){
+//       sum += avg 
+//     }
+//     return sum / array.length
+//   }
+  
+//   for(const arr of arrays){
+//     averages.push(getAvg(arr))
+//   }
+//   return averages
+  
+//   }
+
+
+const leafList = (root) => {
+  let stack = [root]
+  let leafsLR = []
   if(!root) return []
-  let queue = [{node: root, level: 0}]
-  let arrays = []
-  let averages = []
-  
-//   subArrays for each level
-  while(queue.length > 0){
-    const {node, level} = queue.shift()
-    if(arrays.length === level){
-      arrays[level] = [node.val]
-    }else {
-      arrays[level].push(node.val)
-    }
-    if(node.left !== null) queue.push({node: node.left, level: level + 1})
-    if(node.right !== null) queue.push({node: node.right, level: level + 1})
+  while(stack.length > 0){
+    let currentNode = stack.pop()
+    if(currentNode.left === null && currentNode.right === null) leafsLR.push(currentNode.val)
+    
+     if(currentNode.right !== null)stack.push(currentNode.right)
+    if(currentNode.left !== null) stack.push(currentNode.left)
+   
+    
   }
-  
-//   average of subArray 
-  const getAvg = (array) => {
-    let sum = 0
-    for(const avg of array){
-      sum += avg 
-    }
-    return sum / array.length
-  }
-  
-  for(const arr of arrays){
-    averages.push(getAvg(arr))
-  }
-  return averages
-  
-  }
+  return leafsLR
+};
